@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width, viewport-fit=cover">
+    <title>Dine n Dash</title>
+
+    <!-- remove safari web elements if saved to homescreen -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" sizes="180x180" href="img/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon/favicon-16x16.png">
+    <link rel="shortcut icon" href="img/favicon/favicon.ico">
+    <meta name="theme-color" content="#ffffff">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+  </head>
+  <body ng-app="dinendash">
+
+    <ion-nav-bar class="bar-stable" align-title="center">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+    </ion-nav-bar>
+
+    <ion-nav-view></ion-nav-view>
+
+    <!-- libraries js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+    <script src="lib/lodash/4.17.2/lodash.min.js"></script>
+    <script src="lib/jquery/3.1.1/jquery.min.js"></script>
+    <script src="lib/firebase/firebase.min.js"></script>
+    <script src="lib/firebase/angularfire.min.js"></script>
+    <script src="lib/moment/moment.min.js"></script>
+    <script src="lib/moment/angular-moment.min.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <!-- commenting out for now, since we have no plans to deploy native yet -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/dinendash.js"></script>
+    <script src="js/common/components/frame.routes.js"></script>
+    <script src="js/common/directives/focus-on.directive.js"></script>
+    <script src="js/common/services/local-storage.js"></script>
+    <script src="js/common/services/firebase.service.js"></script>
+    <script src="js/common/services/settings.service.js"></script>
+
+    <script src="js/components/add-names/add-names.module.js"></script>
+    <script src="js/components/add-names/add-names.controller.js"></script>
+    <script src="js/components/add-names/add-names.routes.js"></script>
+  </body>
+</html>
