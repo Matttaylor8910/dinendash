@@ -6,7 +6,8 @@
       'firebase',
       'angularMoment',
 
-      'addNames'
+      'billList',
+      'editBill'
     ])
     .config(config)
     .run(run);
@@ -33,12 +34,12 @@
     });
 
     var config = {
-      apiKey: 'AIzaSyBe_ufI3rDd9aLQ95B1iDkKNdsslPmMr2o',
-      authDomain: 'wca-environments.firebaseapp.com',
-      databaseURL: 'https://wca-environments.firebaseio.com',
-      projectId: 'wca-environments',
-      storageBucket: 'wca-environments.appspot.com',
-      messagingSenderId: '79698754742'
+      apiKey: "AIzaSyB3xLDWymwsNOoPJCwUydO8BV0DIiuFeVw",
+      authDomain: "dine-n-dash-65f1f.firebaseapp.com",
+      databaseURL: "https://dine-n-dash-65f1f.firebaseio.com",
+      projectId: "dine-n-dash-65f1f",
+      storageBucket: "dine-n-dash-65f1f.appspot.com",
+      messagingSenderId: "523461503861"
     };
     firebase.initializeApp(config);
   }

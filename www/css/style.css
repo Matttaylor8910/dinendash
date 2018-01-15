@@ -1,0 +1,82 @@
+* {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+.bar-blue {
+  background: #43a8f8;
+  color: #fff;
+  font-weight: bold;
+}
+.bar-blue .title {
+  font-size: 18px;
+  color: #fff;
+}
+.bar-blue .button{
+  color: #fff;
+}
+.button-bar > .button:first-child {
+  border-radius: 25px 0px 0px 25px;
+}
+.button-bar > .button:last-child {
+  border-radius: 0px 25px 25px 0px;
+}
+.light-blue-button-bar .button {
+  color: #43a8f8 !important;
+  border-color: #43a8f8 !important;
+}
+.light-blue-button-bar .button.active {
+  background-color: #43a8f8 !important;
+  color: #fff !important;
+}
+h3.title-question {
+  font-weight: bold;
+}
+input.blue-underscore-input {
+  padding: 2px 0 5px;
+  font-size: 22px;
+  color: #43a8f8;
+  border: none;
+  width: 100%;
+}
+input.blue-underscore-input:focus {
+  border-bottom: 2px solid #43a8f8;
+}
+.blue-list-item {
+  padding: 7px 0;
+  font-size: 22px;
+  color: #43a8f8;
+  cursor: pointer;
+}
+p.hint {
+  padding-top: 5px;
+  color: #7f7f7f;
+}
+ion-content {
+  padding: 20px !important;
+}
+
+/*BILL LIST*/
+.item.bill-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+.item.bill-list-item.last {
+  border: none;
+}
+.item.bill-list-item .bill-info p {
+  white-space: normal;
+}
+.item.bill-list-item .bill-cost {
+  white-space: nowrap;
+}
+
+
+/*EDIT BILL*/
+#edit-bill ion-content {
+  padding-top: 10px !important;
+}
+#edit-bill .light-blue-button-bar {
+  margin-bottom: 15px;
+}

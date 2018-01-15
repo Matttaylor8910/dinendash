@@ -1,6 +1,6 @@
 {
-  "name": "dine n dash",
-  "version": "1.0",
+  "name": "dinendash",
+  "version": "1.0.0",
   "description": "dine n dash: split group dinners better",
   "dependencies": {
     "cordova-ios": "^4.5.4",

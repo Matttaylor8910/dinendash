@@ -1,4 +1,4 @@
 (function () {
   angular
-    .module('addNames', []);
+    .module('billList', []);
 })();

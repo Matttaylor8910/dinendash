@@ -1,0 +1,43 @@
+<ion-view id="edit-bill">
+  <ion-nav-buttons side="left">
+  </ion-nav-buttons>
+  <ion-nav-title>
+    {{$ctrl.billService.selectedBill.restaurant || 'Loading...'}}
+  </ion-nav-title>
+  <ion-nav-buttons side="right">
+  </ion-nav-buttons>
+
+  <ion-content>
+
+    <!-- Button bar -->
+    <div class="button-bar light-blue-button-bar">
+      <a class="button button-outline button-positive"
+         ng-repeat="tab in $ctrl.tabs"
+         ng-class="{'active': tab == $ctrl.selectedTab}"
+         ng-click="$ctrl.selectTab(tab)"
+         ng-bind="tab"></a>
+    </div>
+
+    <!--Items tab-->
+    <div ng-show="$ctrl.selectedTab === $ctrl.tabs[0]">
+
+      <div class="blue-list-item" ng-click="modal.show($event)">
+        <i class="icon ion-plus"></i>
+        Add an item
+      </div>
+
+    </div>
+
+    <!--People tab-->
+    <div ng-show="$ctrl.selectedTab === $ctrl.tabs[1]">
+      <div class="person-bill-item" ng-repeat="person in $ctrl.billService.selectedBill.names">
+        {{person}}
+      </div>
+    </div>
+
+  </ion-content>
+
+  <div class="bar bar-footer bar-balanced">
+    <div class="title">Finish & Pay</div>
+  </div>
+</ion-view>

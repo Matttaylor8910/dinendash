@@ -1,4 +1,5 @@
 .idea
 plugins/
 resources/
-www/platforms/
+node_modules/
+platforms/

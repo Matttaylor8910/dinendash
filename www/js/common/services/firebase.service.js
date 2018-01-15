@@ -4,26 +4,14 @@
     .factory('firebaseService', firebaseService);
 
   function firebaseService() {
-    var TESTING_LOCALLY = false;
-
-    var dbRef;
-
     var service = {
+      dbRef: firebase.database(),
 
+      snapshotToArray: snapshotToArray,
+      snapshotToObject: snapshotToObject
     };
 
-    init();
-
     return service;
-
-    /**
-     * Initialize the firebase objects and collections
-     */
-    function init() {
-      // connect to the firebase database
-      dbRef = firebase.database();
-
-    }
 
     /**
      * Convert a firebase snapshot to an array
