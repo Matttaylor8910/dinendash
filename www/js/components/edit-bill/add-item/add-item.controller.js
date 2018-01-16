@@ -33,7 +33,6 @@
     function checkForSelection() {
       if (itemService.selectedItem) {
         $ctrl.newItem = _.extend(newItem(), itemService.selectedItem);
-        $ctrl.editing = !_.isUndefined($ctrl.newItem.key);
       }
       else {
         $ctrl.newItem = newItem();
@@ -43,6 +42,7 @@
       _.each($ctrl.people, function (person) {
         person.selected = $ctrl.newItem.names.includes(person.name);
       });
+      $ctrl.editing = !_.isUndefined($ctrl.newItem.key);
     }
 
     function saveItem() {

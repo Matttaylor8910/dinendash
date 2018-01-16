@@ -39,7 +39,7 @@
             return item.names && item.names.includes(name);
           })
         };
-        person.total = _(person.items).map('cost').map(parseFloat).sum().toFixed(2);
+        person.total = _(person.items).map('costPerPerson').map(parseFloat).sum().toFixed(2);
         return person;
       });
 

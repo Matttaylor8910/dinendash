@@ -39,6 +39,9 @@
           if (item.shared) {
             item.costPerPerson = (parseFloat(item.cost) / item.names.length).toFixed(2);
           }
+          else {
+            item.costPerPerson = item.cost;
+          }
           return item;
         });
         bill.items = _.sortBy(bill.items, 'title');
@@ -57,7 +60,7 @@
 
     function addItemToBill(key, item) {
       var index = billsCollection.$indexFor(key);
-      if (index > 0 && item) {
+      if (index >= 0 && item) {
         // initialize the array if it's not there yet
         var array = billsCollection[index].items || [];
         billsCollection[index].items = array.concat([item]);
@@ -67,7 +70,7 @@
 
     function updateItemOnBill(key, item) {
       var index = billsCollection.$indexFor(key);
-      if (index > 0 && item && item.key) {
+      if (index >= 0 && item && item.key >= 0) {
         var key = item.key;
         delete item.key;
         billsCollection[index].items[key] = item;
