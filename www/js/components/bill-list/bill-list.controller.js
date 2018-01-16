@@ -3,7 +3,7 @@
     .module('billList', [])
     .controller('BillListController', BillListController);
 
-  function BillListController($scope, $state, $ionicModal, billService) {
+  function BillListController($scope, $state, $ionicModal, billService, editBillService) {
     var $ctrl = this;
 
     $ctrl.billList = billService;
@@ -21,7 +21,7 @@
     }
 
     function selectBill(bill) {
-      billService.selectBill(bill);
+      editBillService.selectBill(bill);
       $state.go('app.edit-bill', {key: bill.key});
     }
   }

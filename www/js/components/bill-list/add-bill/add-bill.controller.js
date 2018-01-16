@@ -41,7 +41,9 @@
         restaurant: '',
         currency: 'USD',
         names: [],
-        total: 0
+        total: 0,
+        tax: 0,
+        tip: 0
       };
     }
   }

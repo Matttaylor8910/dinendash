@@ -6,7 +6,7 @@
   function editBillConfig($stateProvider) {
     $stateProvider
       .state('app.edit-bill', {
-        url: '/edit-bill/:key',
+        url: '/edit-bill/:key?tab',
         views: {
           'content': {
             templateUrl: 'js/components/edit-bill/edit-bill.tpl.html',

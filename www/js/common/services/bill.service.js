@@ -9,10 +9,11 @@
 
     var service = {
       bills: undefined,
-      selectedBill: undefined,
 
       addBill: addBill,
-      selectBill: selectBill
+      getBill: getBill,
+      addItemToBill: addItemToBill,
+      updateItemOnBill: updateItemOnBill
     };
 
     init();
@@ -24,16 +25,24 @@
       billsCollection = $firebaseArray(billsRef);
       billsRef.on('value', function (snapshot) {
         service.bills = mapBills(firebaseService.snapshotToArray(snapshot));
-        if ($state.params.key) {
-          service.selectedBill = _.find(service.bills, {key: $state.params.key});
-        }
-        $rootScope.$emit('firebase.billsUpdated');
+        $rootScope.$broadcast('billsUpdated');
       });
     }
 
     function mapBills(bills) {
       return _.map(bills, function (bill) {
-        bill.items = bill.items || [];
+        bill.names = _.sortBy(bill.names);
+        bill.items = _.map(bill.items, function (item, index) {
+          item.key = index;
+          item.cost = parseFloat(item.cost).toFixed(2);
+          item.shared = parseFloat(item.quantity) === 1 && item.names && item.names.length > 1;
+          if (item.shared) {
+            item.costPerPerson = (parseFloat(item.cost) / item.names.length).toFixed(2);
+          }
+          return item;
+        });
+        bill.items = _.sortBy(bill.items, 'title');
+        bill.total = _(bill.items).map('cost').map(parseFloat).sum().toFixed(2);
         return bill;
       })
     }
@@ -42,8 +51,28 @@
       billsCollection.$add(bill);
     }
 
-    function selectBill(bill) {
-      service.selectedBill = bill;
+    function getBill(key) {
+      return _.find(service.bills, {key: key});
+    }
+
+    function addItemToBill(key, item) {
+      var index = billsCollection.$indexFor(key);
+      if (index > 0 && item) {
+        // initialize the array if it's not there yet
+        var array = billsCollection[index].items || [];
+        billsCollection[index].items = array.concat([item]);
+      }
+      billsCollection.$save(index);
+    }
+
+    function updateItemOnBill(key, item) {
+      var index = billsCollection.$indexFor(key);
+      if (index > 0 && item && item.key) {
+        var key = item.key;
+        delete item.key;
+        billsCollection[index].items[key] = item;
+      }
+      billsCollection.$save(index);
     }
   }
 })();

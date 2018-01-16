@@ -2,12 +2,12 @@
   <ion-nav-buttons side="left">
   </ion-nav-buttons>
   <ion-nav-title>
-    {{$ctrl.billService.selectedBill.restaurant || 'Loading...'}}
+    {{$ctrl.editBillService.selectedBill.restaurant || 'Loading...'}}
   </ion-nav-title>
   <ion-nav-buttons side="right">
   </ion-nav-buttons>
 
-  <ion-content>
+  <ion-content class="has-footer">
 
     <!-- Button bar -->
     <div class="button-bar light-blue-button-bar">
@@ -21,23 +21,76 @@
     <!--Items tab-->
     <div ng-show="$ctrl.selectedTab === $ctrl.tabs[0]">
 
-      <div class="blue-list-item" ng-click="modal.show($event)">
+      <div class="tax-and-tip">
+        <div class="space-between">
+          <div>Tax</div>
+          <input type="number" class="blue-underscore-input" ng-model="$ctrl.editBillService.selectedBill.tax">
+        </div>
+        <div class="space-between">
+          <div>Tip</div>
+          <input type="number" class="blue-underscore-input" ng-model="$ctrl.editBillService.selectedBill.tip">
+        </div>
+      </div>
+
+      <hr>
+
+      <div
+        class="item items-tabs-item"
+        ng-class="{'last': ($index + 1) === $ctrl.editBillService.selectedBill.items.length }"
+        ng-repeat="item in $ctrl.editBillService.selectedBill.items"
+        ng-click="$ctrl.openModalWithItem(item, $event)">
+
+        <div class="item-name space-between">
+          <span>
+            <strong>{{item.quantity}}</strong> {{item.title}}</span>
+          <span>${{item.cost}}</span>
+        </div>
+        <div class="space-between">
+          <span ng-bind="item.names.join(', ')"></span>
+          <span ng-if="item.costPerPerson">${{item.costPerPerson}} each</span>
+        </div>
+      </div>
+
+      <div class="blue-list-item" ng-click="$ctrl.openModal($event)">
         <i class="icon ion-plus"></i>
-        Add an item
+        Add Something
       </div>
 
     </div>
 
     <!--People tab-->
     <div ng-show="$ctrl.selectedTab === $ctrl.tabs[1]">
-      <div class="person-bill-item" ng-repeat="person in $ctrl.billService.selectedBill.names">
-        {{person}}
+      <div
+        class="item people-tab-item"
+        ng-class="{'last': ($index + 1) === $ctrl.editBillService.selectedBill.people.length }"
+        ng-repeat="person in $ctrl.editBillService.selectedBill.people">
+
+        <div class="person-name small-padding-bottom space-between">
+          <span ng-bind="person.name"></span>
+          <span>${{person.total}}</span>
+        </div>
+        <div class="padding-left small-padding-bottom space-between" ng-repeat="item in person.items" ng-click="$ctrl.openModalWithItem(item, $event)">
+          <span>
+            <i class="icon ion-ios-{{item.shared ? 'people' : 'person'}}"></i>
+            {{item.title}}
+          </span>
+          <span>${{item.cost}}</span>
+        </div>
+        <div class="padding-left light-blue-text" ng-click="$ctrl.openModalWithPerson(person, $event)">
+          <i class="icon ion-plus"></i>
+          Add Something
+        </div>
+      </div>
+
+      <div class="padding-top blue-list-item">
+        <i class="icon ion-plus"></i>
+        Add Someone Else
       </div>
     </div>
 
   </ion-content>
 
   <div class="bar bar-footer bar-balanced">
-    <div class="title">Finish & Pay</div>
+    <div class="title">Finish & Pay - ${{$ctrl.editBillService.selectedBill.total}}</div>
   </div>
 </ion-view>
