@@ -25,7 +25,7 @@
 
       <i class="icon" ng-class="{'ion-checkmark-round balanced' : person.selected, 'ion-close-round': !person.selected}"></i>
       <span ng-class="{'balanced' : person.selected}">{{person.name}}</span>
-      <span class="item-note" ng-if="person.selected && $ctrl.newItem.costPerPerson">
+      <span class="item-note" ng-if="person.selected && $ctrl.newItem.shared">
         ${{$ctrl.newItem.costPerPerson}} each
       </span>
     </div>

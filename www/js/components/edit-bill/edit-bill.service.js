@@ -35,7 +35,7 @@
         var person = {
           name: name,
           // map their items to them
-          items: _.filter(bill.items, function (item) {
+          items: _.filter(_.sortBy(bill.items, 'title'), function (item) {
             return item.names && item.names.includes(name);
           })
         };

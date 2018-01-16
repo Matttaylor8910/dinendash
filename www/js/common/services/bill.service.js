@@ -44,7 +44,6 @@
           }
           return item;
         });
-        bill.items = _.sortBy(bill.items, 'title');
         bill.total = _(bill.items).map('cost').map(parseFloat).sum().toFixed(2);
         return bill;
       })
