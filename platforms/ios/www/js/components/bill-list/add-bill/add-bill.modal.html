@@ -1,0 +1,21 @@
+<ion-modal-view ng-controller="AddBillController as $ctrl">
+  <ion-header-bar class="bar bar-blue">
+    <button class="button button-clear button-icon ion-chevron-down" ng-click="modal.hide()"></button>
+    <h1 class="title">Add Bill</h1>
+  </ion-header-bar>
+
+  <ion-content>
+    <h3 class="title-question">What Restaurant or Bar?</h3>
+    <input class="blue-underscore-input" placeholder="Bar Gernika" ng-model="$ctrl.newBill.restaurant">
+    <h3 class="title-question">What currency?</h3>
+    <input class="blue-underscore-input" placeholder="USD" ng-model="$ctrl.newBill.currency">
+    <h3 class="title-question">Who's at the table?</h3>
+    <input class="blue-underscore-input" ng-repeat="name in $ctrl.newBill.names track by $index" ng-model="name" ng-change="$ctrl.updateName(name, $index)">
+    <input class="blue-underscore-input" placeholder="{{$ctrl.newBill.names.length === 0 ? 'Tap Here' : 'Add Another'}}" ng-model="$ctrl.currentName" ng-enter="$ctrl.addName()" focus-on="nameInputSelect">
+    <p class="hint" ng-show="$ctrl.newBill.names.length === 0">Just hit return to enter more names</p>
+  </ion-content>
+
+  <div class="bar bar-footer bar-balanced">
+    <div class="title" ng-click="$ctrl.addBill()">Done Adding Names</div>
+  </div>
+</ion-modal-view>

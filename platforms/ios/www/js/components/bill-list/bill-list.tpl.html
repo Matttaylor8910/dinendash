@@ -1,0 +1,31 @@
+<ion-view id="bill-list">
+  <ion-nav-buttons side="left">
+  </ion-nav-buttons>
+  <ion-nav-title>Dine n Dash</ion-nav-title>
+  <ion-nav-buttons side="right">
+  </ion-nav-buttons>
+
+  <ion-content>
+    <ion-spinner ng-if="!$ctrl.billList.bills"></ion-spinner>
+
+    <div
+      class="item bill-list-item"
+      ng-repeat="bill in $ctrl.billList.bills track by $index"
+      ng-class="{'last': ($index + 1) === $ctrl.billList.bills.length }"
+      ng-click="$ctrl.selectBill(bill)">
+
+      <div class="bill-info">
+        <h2 ng-bind="bill.restaurant"></h2>
+        <p ng-bind="bill.names.join(', ')"></p>
+      </div>
+      <div class="bill-cost">${{bill.total}}</div>
+
+    </div>
+
+    <div class="blue-list-item" ng-click="modal.show($event)">
+      <i class="icon ion-plus"></i>
+      Add a new bill
+    </div>
+  </ion-content>
+
+</ion-view>

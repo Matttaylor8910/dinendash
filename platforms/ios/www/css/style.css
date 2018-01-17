@@ -1,0 +1,150 @@
+/*GENERAL*/
+* {
+  font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+.bar-blue {
+  background: #43a8f8;
+  color: #fff;
+  font-weight: bold;
+}
+.bar-blue .title {
+  font-size: 18px;
+  color: #fff;
+}
+.bar-blue .button{
+  color: #fff;
+}
+.button-bar > .button:first-child {
+  border-radius: 25px 0px 0px 25px;
+}
+.button-bar > .button:last-child {
+  border-radius: 0px 25px 25px 0px;
+}
+.light-blue-button-bar {
+  width: 250px;
+  margin: auto;
+}
+.light-blue-button-bar .button {
+  color: #43a8f8 !important;
+  border-color: #43a8f8 !important;
+  min-height: 35px;
+  line-height: 35px;
+}
+.light-blue-button-bar .button.active {
+  background-color: #43a8f8 !important;
+  color: #fff !important;
+}
+.light-blue-text {
+  color: #43a8f8;
+}
+h3.title-question {
+  font-weight: bold;
+}
+input.blue-underscore-input {
+  padding: 2px 0 5px;
+  font-size: 20px;
+  color: #43a8f8;
+  border: none;
+  width: 100%;
+}
+input.blue-underscore-input:focus {
+  border-bottom: 2px solid #43a8f8;
+}
+.blue-list-item {
+  padding: 7px 0;
+  font-size: 20px;
+  color: #43a8f8;
+  cursor: pointer;
+}
+p.hint {
+  padding-top: 5px;
+  color: #7f7f7f;
+}
+ion-content {
+  padding: 20px !important;
+}
+.space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+/*BILL LIST*/
+.item.bill-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+.item.bill-list-item.last {
+  border: none;
+}
+.item.bill-list-item .bill-info p {
+  white-space: normal;
+}
+.item.bill-list-item .bill-cost {
+  white-space: nowrap;
+}
+
+
+/*EDIT BILL*/
+#edit-bill ion-content {
+  padding-top: 10px !important;
+}
+#edit-bill .light-blue-button-bar {
+  margin-bottom: 5px;
+}
+.item.person-select-item,
+.item.people-tab-item,
+.item.items-tabs-item {
+  border: none;
+  border-bottom: 2px solid #ccc;
+}
+.item.person-select-item.last,
+.item.people-tab-item.last,
+.item.items-tabs-item.last {
+  border: none;
+}
+.item.people-tab-item,
+.item.items-tabs-item {
+  padding: 10px 6px;
+}
+
+/*item tab*/
+.items-tab .add-something {
+  padding: 12px 0;
+}
+.items-tabs-item .item-name strong {
+  font-size: 22px;
+  margin-right: 5px;
+}
+.items-tabs-item .item-name {
+  font-size: 20px;
+  font-weight: bold;
+  padding-bottom: 5px;
+}
+.items-tabs-item div {
+  white-space: normal;
+}
+.items-tabs-item .cost-per-person {
+  white-space: nowrap;
+}
+.tax-and-tip .blue-underscore-input {
+  width: 100px;
+  text-align: right;
+  border-bottom: 2px solid #43a8f8;
+}
+
+/*people tab*/
+.people-tab-item .person-name {
+  font-size: 20px;
+  font-weight: bold;
+}
+.people-tab-item .small-padding-bottom {
+  padding-bottom: 5px;
+}
+.people-tab-item i.icon.ion-ios-person {
+  margin: 0 1px 0 2px;
+}
