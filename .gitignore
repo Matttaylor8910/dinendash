@@ -3,3 +3,4 @@ plugins/
 resources/
 node_modules/
 platforms/
+package-lock.json

@@ -46,7 +46,7 @@
 
     function selectTab(tab) {
       $ctrl.selectedTab = tab;
-      $state.go('app.edit-bill', {tab: tab}, {notify: false})
+      $state.go('app.edit-bill', {tab: tab}, {notify: false});
       $ionicScrollDelegate.resize();
     }
   }
