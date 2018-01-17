@@ -3,7 +3,7 @@
     .module('editBill')
     .controller('AddItemController', AddItemController);
 
-  function AddItemController($scope, $rootScope, $ionicScrollDelegate, editBillService, itemService) {
+  function AddItemController($scope, $rootScope, $ionicPopup, $ionicScrollDelegate, editBillService, itemService) {
     var $ctrl = this;
 
     $ctrl.newItem = newItem();
@@ -11,6 +11,7 @@
     $ctrl.editBillService = editBillService;
 
     $ctrl.saveItem = saveItem;
+    $ctrl.removeItem = confirmRemove;
     $ctrl.selectPerson = selectPerson;
     $ctrl.recalculateSharedCost = recalculateSharedCost;
 
@@ -53,6 +54,29 @@
         itemService.addItem($ctrl.newItem);
       }
 
+      $scope.modal.hide();
+    }
+
+    function confirmRemove() {
+      var itemToRemove = $ctrl.newItem.title || 'this item';
+      $ionicPopup.confirm({
+        title: 'Remove ' + itemToRemove,
+        template: '<div class="text-center">Do you really want to remove <strong>' + itemToRemove  +'</strong>?</div>',
+        buttons: [
+          {
+            text: 'Cancel'
+          },
+          {
+            text: 'Remove',
+            type: 'button-assertive',
+            onTap: removeItem
+          }
+        ]
+      });
+    }
+
+    function removeItem() {
+      itemService.removeItem($ctrl.newItem);
       $scope.modal.hide();
     }
 

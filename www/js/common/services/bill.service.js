@@ -12,8 +12,10 @@
 
       addBill: addBill,
       getBill: getBill,
+
       addItemToBill: addItemToBill,
-      updateItemOnBill: updateItemOnBill
+      updateItemOnBill: updateItemOnBill,
+      removeItemOnBill: removeItemOnBill
     };
 
     init();
@@ -34,8 +36,9 @@
         bill.names = _.sortBy(bill.names);
         bill.items = _.map(bill.items, function (item, index) {
           item.key = index;
-          item.cost = parseFloat(item.cost).toFixed(2);
-          item.shared = parseFloat(item.quantity) === 1 && item.names && item.names.length > 1;
+          item.cost = item.cost ? parseFloat(item.cost).toFixed(2) : 0;
+          item.names = item.names || [];
+          item.shared = parseFloat(item.quantity) === 1 && item.names.length > 1;
           if (item.shared) {
             item.costPerPerson = (parseFloat(item.cost) / item.names.length).toFixed(2);
           }
@@ -73,6 +76,14 @@
         var key = item.key;
         delete item.key;
         billsCollection[index].items[key] = item;
+      }
+      billsCollection.$save(index);
+    }
+
+    function removeItemOnBill(key, item) {
+      var index = billsCollection.$indexFor(key);
+      if (index >= 0 && item && item.key >= 0) {
+        billsCollection[index].items.splice(item.key, 1);
       }
       billsCollection.$save(index);
     }

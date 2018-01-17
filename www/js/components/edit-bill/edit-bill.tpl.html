@@ -19,7 +19,7 @@
     </div>
 
     <!--Items tab-->
-    <div ng-show="$ctrl.selectedTab === $ctrl.tabs[0]">
+    <div ng-show="$ctrl.selectedTab === $ctrl.tabs[0]" class="items-tab">
 
       <div class="tax-and-tip">
         <div class="space-between">
@@ -34,6 +34,11 @@
 
       <hr>
 
+      <div class="blue-list-item add-something" ng-click="$ctrl.openModal($event)">
+        <i class="icon ion-plus"></i>
+        Add Something
+      </div>
+
       <div
         class="item items-tabs-item"
         ng-class="{'last': ($index + 1) === $ctrl.editBillService.selectedBill.items.length }"
@@ -43,26 +48,22 @@
         <div class="item-name space-between">
           <span>
             <strong>{{item.quantity}}</strong> {{item.title}}</span>
-          <span>${{item.cost}}</span>
+          <span ng-class="{'assertive': item.cost === 0}">${{item.cost}}</span>
         </div>
         <div class="space-between">
           <span>
-            <span ng-if="item.names.length < 5"><span ng-if="item.names.length === 1">Just</span> {{item.names.join(', ')}}</span>
+            <span class="assertive" ng-if="item.names.length === 0">Unclaimed</span>
+            <span ng-if="item.names.length && item.names.length < 5"><span ng-if="item.names.length === 1">Just</span> {{item.names.join(', ')}}</span>
             <span ng-if="item.names.length >= 5">{{item.names.length}} People</span>
           </span>
           <span class="cost-per-person" ng-if="item.costPerPerson">${{item.costPerPerson}} each</span>
         </div>
       </div>
 
-      <div class="blue-list-item" ng-click="$ctrl.openModal($event)">
-        <i class="icon ion-plus"></i>
-        Add Something
-      </div>
-
     </div>
 
     <!--People tab-->
-    <div ng-show="$ctrl.selectedTab === $ctrl.tabs[1]">
+    <div ng-show="$ctrl.selectedTab === $ctrl.tabs[1]" class="people-tab">
       <div
         class="item people-tab-item"
         ng-class="{'last': ($index + 1) === $ctrl.editBillService.selectedBill.people.length }"
@@ -77,7 +78,7 @@
             <i class="icon ion-ios-{{item.shared ? 'people' : 'person'}}"></i>
             {{item.title}}
           </span>
-          <span>${{item.costPerPerson}}</span>
+          <span ng-class="{'assertive': item.cost === 0}">${{item.costPerPerson}}</span>
         </div>
         <div class="padding-left light-blue-text" ng-click="$ctrl.openModalWithPerson(person, $event)">
           <i class="icon ion-plus"></i>
@@ -85,10 +86,10 @@
         </div>
       </div>
 
-      <div class="padding-top blue-list-item">
-        <i class="icon ion-plus"></i>
-        Add Someone Else
-      </div>
+      <!--<div class="padding-top blue-list-item">-->
+        <!--<i class="icon ion-plus"></i>-->
+        <!--Add Someone Else-->
+      <!--</div>-->
     </div>
 
   </ion-content>

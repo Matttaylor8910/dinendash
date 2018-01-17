@@ -9,6 +9,7 @@
 
       addItem: addItem,
       updateItem: updateItem,
+      removeItem: removeItem,
       selectItem: selectItem
     };
 
@@ -22,6 +23,10 @@
     function updateItem(item) {
       removeFields(item);
       billService.updateItemOnBill(editBillService.selectedBill.key, item);
+    }
+
+    function removeItem(item) {
+      billService.removeItemOnBill(editBillService.selectedBill.key, item)
     }
 
     function selectItem(item) {

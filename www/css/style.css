@@ -113,6 +113,9 @@ ion-content {
 }
 
 /*item tab*/
+.items-tab .add-something {
+  padding: 12px 0;
+}
 .items-tabs-item .item-name strong {
   font-size: 22px;
   margin-right: 5px;

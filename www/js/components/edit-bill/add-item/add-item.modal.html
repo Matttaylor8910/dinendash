@@ -2,6 +2,7 @@
   <ion-header-bar class="bar bar-blue">
     <button class="button button-clear button-icon ion-chevron-down" ng-click="modal.hide()"></button>
     <h1 class="title">Add Item</h1>
+    <button class="button button-clear button-icon ion-trash-a" ng-click="$ctrl.removeItem()" ng-if="$ctrl.editing"></button>
   </ion-header-bar>
 
   <ion-content class="has-footer">

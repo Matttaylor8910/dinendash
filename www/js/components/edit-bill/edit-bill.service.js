@@ -43,6 +43,8 @@
         return person;
       });
 
+      bill.items = _.reverse(bill.items);
+
       return bill;
     }
   }
