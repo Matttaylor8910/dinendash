@@ -76,6 +76,13 @@
           </span>
           <span ng-class="{'assertive': item.cost === 0}">${{item.costPerPerson}}</span>
         </div>
+        <div class="padding-left small-padding-bottom space-between">
+          <span>
+            <i class="icon ion-cash"></i>
+            Tax & Tip
+          </span>
+          <span>${{person.taxAndTip}}</span>
+        </div>
         <div class="padding-left light-blue-text" ng-click="$ctrl.openModalWithPerson(person, $event)">
           <i class="icon ion-plus"></i>
           Add Something
