@@ -44,9 +44,7 @@
       });
 
       bill.subtotal = _(bill.people).map('subtotal').map(parseFloat).sum().toFixed(2);
-      console.log(bill.subtotal);
       bill.total = parseFloat(bill.subtotal) + parseFloat(bill.tax) + parseFloat(bill.tip);
-      console.log(bill.total);
 
       bill.people = _.map(bill.people, function (person) {
         person.billPercent = parseFloat(person.subtotal) / parseFloat(bill.subtotal);

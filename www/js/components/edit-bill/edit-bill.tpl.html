@@ -20,11 +20,11 @@
       <div class="tax-and-tip">
         <div class="space-between">
           <div>Tax</div>
-          <input type="number" class="blue-underscore-input" ng-model="$ctrl.editBillService.selectedBill.tax">
+          <input type="number" class="blue-underscore-input" ng-model="$ctrl.editBillService.selectedBill.tax" ng-change="$ctrl.updateBill()">
         </div>
         <div class="space-between">
           <div>Tip</div>
-          <input type="number" class="blue-underscore-input" ng-model="$ctrl.editBillService.selectedBill.tip">
+          <input type="number" class="blue-underscore-input" ng-model="$ctrl.editBillService.selectedBill.tip" ng-change="$ctrl.updateBill()">
         </div>
       </div>
 

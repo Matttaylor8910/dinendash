@@ -9,6 +9,7 @@
     $ctrl.tabs = ['Items', 'People'];
     $ctrl.editBillService = editBillService;
 
+    $ctrl.updateBill = updateBill;
     $ctrl.selectTab = selectTab;
     $ctrl.openModal = openModal;
     $ctrl.openModalWithItem = openModalWithItem;
@@ -27,6 +28,16 @@
       })
     }
 
+    function updateBill() {
+      console.log(editBillService.selectedBill);
+    }
+
+    function selectTab(tab) {
+      $ctrl.selectedTab = tab;
+      $state.go('app.edit-bill', {tab: tab}, {notify: false});
+      $ionicScrollDelegate.resize();
+    }
+
     function openModal($event) {
       itemService.selectItem(undefined);
       $scope.modal.show($event);
@@ -42,12 +53,6 @@
         names: [person.name]
       });
       $scope.modal.show($event);
-    }
-
-    function selectTab(tab) {
-      $ctrl.selectedTab = tab;
-      $state.go('app.edit-bill', {tab: tab}, {notify: false});
-      $ionicScrollDelegate.resize();
     }
   }
 })();
